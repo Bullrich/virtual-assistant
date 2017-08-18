@@ -1,1 +1,6 @@
 SpeechRecognition
+gTTS
+wikipedia
+requests
+beautifulsoup4
+selenium

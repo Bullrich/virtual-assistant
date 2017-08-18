@@ -1,3 +1,4 @@
 profile.yaml
 *.pyc
+geckodriver.log
 .idea/

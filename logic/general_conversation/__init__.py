@@ -1,9 +1,10 @@
-from voice_module import speak
 import random
+
+from logic.voice_module import speak
 
 
 def who_are_you():
-    messages = ['I am Melissa, your lovely personal assistant', 'Melissa, didn\'t I tell you before?',
+    messages = ['I am Melissa, your lovely personal logic', 'Melissa, didn\'t I tell you before?',
                 'You ask that so many times! I am Melissa.']
     speak(random.choice(messages))
 
