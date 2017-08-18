@@ -1,8 +1,27 @@
-from logic import general_conversation
-from logic.actions import tell_time, weather, define_subject, business_news_reader, open_firefox, connect_proxy, sleep
+from grey_matter import general_conversation
+from grey_matter.actions import tell_time, weather, define_subject, business_news_reader, open_firefox, connect_proxy, sleep
+from grey_matter.voice_module import speak
 
 
 def brain(name, speech_text, profile_data):
+    def conversations():
+        if check_message(['who', 'are', 'you']):
+            speech_answer = general_conversation.who_are_you()
+        elif check_message(['how', 'i', 'look']) or check_message(['how', 'am', 'i']):
+            speech_answer = general_conversation.how_am_i()
+        elif check_message(['tell', 'joke']):
+            speech_answer = general_conversation.tell_joke()
+        elif check_message(['who', 'am', 'i']):
+            speech_answer = general_conversation.who_am_i(name)
+        elif check_message(['where', 'born']):
+            speech_answer = general_conversation.where_born()
+        elif check_message(['how', 'are', 'you']):
+            speech_answer = general_conversation.how_are_you()
+        else:
+            speech_answer = general_conversation.undefined()
+
+        speak(speech_answer)
+
     def check_message(check):
         """
         This function checks if the items in the list(specified in
@@ -14,19 +33,7 @@ def brain(name, speech_text, profile_data):
         else:
             return False
 
-    if check_message(['who', 'are', 'you']):
-        general_conversation.who_are_you()
-    elif check_message(['how', 'i', 'look']) or check_message(['how', 'am', 'i']):
-        general_conversation.how_am_i()
-    elif check_message(['tell', 'joke']):
-        general_conversation.tell_joke()
-    elif check_message(['who', 'am', 'i']):
-        general_conversation.who_am_i(name)
-    elif check_message(['where', 'born']):
-        general_conversation.where_born()
-    elif check_message(['how', 'are', 'you']):
-        general_conversation.how_are_you()
-    elif check_message(['time']):
+    if check_message(['time']):
         tell_time.what_is_time()
     elif check_message(['how', 'weather']) or check_message(['hows', 'weather']):
         weather.weather(profile_data['city_name'], profile_data['city_code'])
@@ -41,4 +48,4 @@ def brain(name, speech_text, profile_data):
     elif check_message(['sleep']):
         sleep.go_to_sleep()
     else:
-        general_conversation.undefined()
+        conversations()

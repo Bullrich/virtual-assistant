@@ -1,7 +1,9 @@
 import re
+
 import wikipedia
 
-from logic.voice_module import speak
+from grey_matter.voice_module import speak
+
 
 def define_subject(speech_text):
     words_of_message = speech_text.split()

@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-from logic.voice_module import speak
+from grey_matter.voice_module import speak
 
 # NDTV News
 fixed_url = 'http://profit.ndtv.com/news/latest'
@@ -32,7 +32,8 @@ news_dictionary = dict(zip(news_headlines_list_small, news_details_list_small))
 
 
 def news_reader():
-    print news_dictionary
+    print
+    news_dictionary
     for key, value in news_dictionary.items():
         speak('Headline, ' + key)
         speak('News, ' + value)

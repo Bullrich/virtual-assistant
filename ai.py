@@ -1,10 +1,11 @@
-import yaml
 import sys
+import unicodedata
 
-import speech_recognition as sr
+import yaml
 
-from logic.voice_module import speak
 from brain import brain
+from grey_matter.ears import listen
+from grey_matter.voice_module import speak
 
 profile = open('profile.yaml')
 profile_data = yaml.safe_load(profile)
@@ -12,33 +13,37 @@ profile.close()
 
 # Functioning Variables
 name = profile_data['name']
-city_name = profile_data['city_name']
-city_code = profile_data['city_code']
 speak('Welcome, {}, systems are ready'.format(name))
 
+
+def strip_accents(s):
+    return ''.join(c for c in unicodedata.normalize('NFD', s)
+                   if unicodedata.category(c) != 'Mn')
+
+
 def main():
-    speech_text = ''
-    for arg in sys.argv:
-        if arg == '-t':
-            speech_text = raw_input("What can I help you with?\n")
+    while True:
+        speech_text = ''
+        for arg in sys.argv:
+            if arg == '-t':
+                speech_text = raw_input("What can I help you with?\n")
 
-    if speech_text is '':
-        r = sr.Recognizer()
-        with sr.Microphone() as source:
-            print("Say something")
-            audio = r.listen(source)
+        if speech_text is '':
+            speech_text = listen()
 
-        try:
-            # second value of recognize_google is API_KEY
-            speech_text = r.recognize_google(audio)  # .lower().replace("'", "")
-            # to make it work in spanish call it as r.recognize_google(audio, None, "es-AR")
-            print("Melissa thinks you said '" + speech_text + "'")
-        except sr.UnknownValueError:
-            print("Melissa could not understand audio")
-        except sr.RequestError as e:
-            print("Could not request results from Google Speech Recognition service; {0}".format(e))
+        if speech_text != '':
+            brain(name, strip_accents(speech_text.lower()), profile_data)
 
-    brain(name, speech_text.lower(), profile_data)
+
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
 
 
 main()
