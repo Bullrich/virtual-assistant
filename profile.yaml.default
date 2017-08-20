@@ -4,3 +4,9 @@ city_name:
   Buenos Aires
 city_code:
   ARBA0009
+music_path:
+  /home/javyer/Repositories/Unity/asteroid-invader/Assets/_AsteroidInvader/Sound/
+proxy_username:
+  ble
+proxy_password:
+  ble

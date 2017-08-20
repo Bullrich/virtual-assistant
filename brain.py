@@ -1,5 +1,5 @@
 from grey_matter import general_conversation
-from grey_matter.actions import tell_time, weather, define_subject, business_news_reader, open_firefox, connect_proxy, sleep
+from grey_matter.actions import tell_time, weather, define_subject, open_firefox, play_music, connect_proxy, sleep
 from grey_matter.voice_module import speak
 
 
@@ -39,13 +39,19 @@ def brain(name, speech_text, profile_data):
         weather.weather(profile_data['city_name'], profile_data['city_code'])
     elif check_message(['define']):
         define_subject.define_subject(speech_text)
-    elif check_message(['business', 'news']):
-        business_news_reader.news_reader()
+    # elif check_message(['business', 'news']):
+    #     business_news_reader.news_reader()
     elif check_message(['open', 'firefox']):
         open_firefox.open_firefox()
     elif check_message(['connect', 'proxy']):
         connect_proxy.connect_to_proxy('ble', None)
     elif check_message(['sleep']):
         sleep.go_to_sleep()
+    elif check_message(['play', 'music']) or check_message(['music']):
+        play_music.play_random(profile_data['music_path'])
+    elif check_message(['play']):
+        play_music.play_specific_music(speech_text, profile_data['music_path'])
+    elif check_message(['party', 'time']) or check_message(['party', 'mix']):
+        play_music.play_shuffle(profile_data['music_path'])
     else:
         conversations()

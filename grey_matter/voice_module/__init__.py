@@ -1,16 +1,10 @@
 import os
-import sys
 
 from gtts import gTTS
 
-use_google = True
+from grey_matter.utils import get_platform
 
-
-def get_platform():
-    if sys.platform == 'darwin':
-        return 'mac'
-    elif sys.platform == 'linux2' or sys.platform == 'linux':
-        return 'linux'
+use_google = None
 
 
 def tts(audio_string):
@@ -42,4 +36,4 @@ def speak(message):
     if use_google:
         google_to_text(message)
     else:
-        tts(message)
+        print(message)

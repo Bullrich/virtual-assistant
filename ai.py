@@ -29,10 +29,10 @@ def main():
                 speech_text = raw_input("What can I help you with?\n")
 
         if speech_text is '':
-            speech_text = listen()
+            speech_text = strip_accents(listen())
 
         if speech_text != '':
-            brain(name, strip_accents(speech_text.lower()), profile_data)
+            brain(name, speech_text.lower(), profile_data)
 
 
 class bcolors:
