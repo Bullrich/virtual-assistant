@@ -4,3 +4,9 @@ wikipedia
 requests
 beautifulsoup4
 selenium
+pyyaml
+pyaudio
+web.py
+
+# Weather
+git+https://github.com/jtasker/python-weather-api@cf79f478c26dd244e0c90e10d6df91bb4ea8cd5e#egg=pywapi

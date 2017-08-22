@@ -4,7 +4,7 @@ from gtts import gTTS
 
 from grey_matter.utils import get_platform
 
-use_google = None
+use_google = True
 
 
 def tts(audio_string):
@@ -36,4 +36,4 @@ def speak(message):
     if use_google:
         google_to_text(message)
     else:
-        print(message)
+        tts(message)

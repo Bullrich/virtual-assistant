@@ -3,3 +3,4 @@ profile.yaml
 geckodriver.log
 .idea/
 venv/
+memory.db

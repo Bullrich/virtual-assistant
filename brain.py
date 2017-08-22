@@ -1,5 +1,6 @@
 from grey_matter import general_conversation
-from grey_matter.actions import tell_time, weather, define_subject, open_firefox, play_music, connect_proxy, sleep
+from grey_matter.actions import tell_time, weather, define_subject, open_firefox, play_music, connect_proxy, sleep, \
+    notes
 from grey_matter.voice_module import speak
 
 
@@ -53,5 +54,9 @@ def brain(name, speech_text, profile_data):
         play_music.play_specific_music(speech_text, profile_data['music_path'])
     elif check_message(['party', 'time']) or check_message(['party', 'mix']):
         play_music.play_shuffle(profile_data['music_path'])
+    elif check_message(['note']):
+        notes.note_something(speech_text)
+    elif check_message(['read', 'notes']):
+        notes.show_all_notes()
     else:
         conversations()

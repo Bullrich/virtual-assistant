@@ -1,11 +1,17 @@
 import sys
 
 
-def clean_message(speech_text, filter):
+def clean_message(speech_text, word_filter):
     message = speech_text.split()
-    message.remove(filter)
+    message.remove(word_filter)
     cleaned_message = ' '.join(message)
     return cleaned_message
+
+
+def delete_after_word(speech_text, word):
+    l1 = speech_text.split()
+    target_index = l1.index(word)
+    del l1[0: target_index + 1]
 
 
 def get_platform():
