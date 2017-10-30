@@ -5,7 +5,7 @@ import wikipedia
 from grey_matter.voice_module import speak
 
 
-def define_subject(speech_text):
+def define_subject(speech_text, predefined_message):
     words_of_message = speech_text.split()
     words_of_message.remove('define')
     cleaned_message = ' '.join(words_of_message)
@@ -22,5 +22,4 @@ def define_subject(speech_text):
         wiki_data = wiki_data.replace("'", "")
         speak(wiki_data)
     except wikipedia.WikipediaException as e:
-        speak('There was an error, could you be more specific?')
-        print("Can you please be more specific? You may choose something from the following.; {0}".format(e))
+        speak(predefined_message)

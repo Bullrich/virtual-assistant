@@ -2,6 +2,7 @@ import os
 
 from gtts import gTTS
 
+#from grey_matter.debug.debug_message import simple_log
 from grey_matter.utils import get_platform
 
 use_google = True
@@ -20,19 +21,20 @@ depending on the OS.
 
 
 def google_to_text(audio_string):
-    print(audio_string)
     tts = gTTS(text=audio_string, lang='en')
     audio_name = "audio.mp3"
     tts.save(audio_name)
     if get_platform() == "mac":
         tts_engine = 'afplay'
     else:
-        tts_engine = 'mpg321'
+        tts_engine = 'mpg123'
     os.system('{} {}'.format(tts_engine, audio_name))
     os.remove(audio_name)
 
 
 def speak(message):
+    #simple_log(message)
+    print(message)
     if use_google:
         google_to_text(message)
     else:

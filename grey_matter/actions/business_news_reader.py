@@ -32,8 +32,7 @@ news_dictionary = dict(zip(news_headlines_list_small, news_details_list_small))
 
 
 def news_reader():
-    print
-    news_dictionary
+    print news_dictionary
     for key, value in news_dictionary.items():
         speak('Headline, ' + key)
         speak('News, ' + value)

@@ -5,7 +5,7 @@ from grey_matter.utils import clean_message
 from grey_matter.voice_module import speak
 
 
-def note_something(speech_text):
+def note_something(speech_text, message):
     conn = sqlite3.connect('memory.db')
     message = clean_message(speech_text, 'note')
 
@@ -14,12 +14,12 @@ def note_something(speech_text):
     conn.commit()
     conn.close()
 
-    speak('Your note has been saved.')
+    speak(message)
 
 
-def show_all_notes():
+def show_all_notes(message):
     conn = sqlite3.connect('memory.db')
-    speak('Your notes are as follows:')
+    speak(message)
 
     cursor = conn.execute("SELECT notes FROM notes")
 

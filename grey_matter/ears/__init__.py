@@ -1,4 +1,5 @@
 import unicodedata
+from grey_matter.debug.debug_message import log
 
 import speech_recognition as sr
 
@@ -23,17 +24,17 @@ def listen():
     speech_text = ''
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        print("Say something")
+        log("Say something")
         audio = r.listen(source)
 
     try:
         # second value of recognize_google is API_KEY
         speech_text = r.recognize_google(audio)  # .lower().replace("'", "")
         # to make it work in spanish call it as r.recognize_google(audio, None, "es-AR")
-        print("Melissa thinks you said '" + bcolors.UNDERLINE + speech_text + bcolors.ENDC + "'")
+        log("Melissa thinks you said '" + bcolors.UNDERLINE + speech_text + bcolors.ENDC + "'")
     except sr.UnknownValueError:
-        print("Melissa could not understand audio")
+        log("Melissa could not understand audio")
     except sr.RequestError as e:
-        print("Could not request results from Google Speech Recognition service; {0}".format(e))
+        log("Could not request results from Google Speech Recognition service; {0}".format(e))
 
     return strip_accents(speech_text)

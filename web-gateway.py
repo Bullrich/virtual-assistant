@@ -17,7 +17,7 @@ profile.close()
 # Functioning Variables
 name = profile_data['name']
 
-speak('Welcome {}, systems are now ready to run. How can I help you?')
+speak('Welcome {}, systems are now ready to run. How can I help you?'.format(name))
 
 
 class index:

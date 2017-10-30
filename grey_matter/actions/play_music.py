@@ -3,7 +3,7 @@ import random
 
 from grey_matter.utils import clean_message, get_platform
 from grey_matter.voice_module import speak
-
+from grey_matter.debug.debug_message import log
 
 def mp3gen(music_path):
     """
@@ -30,15 +30,16 @@ def music_player(file_name):
     return os.system("{} '{}'".format(player, file_name))
 
 
-def play_random(music_path):
+def play_random(music_path, message_for_random):
     try:
         music_listing = mp3gen(music_path)
         music_playing = random.choice(music_listing)
-        speak("Now playing {}".format(music_playing))
+        speak(message_for_random[0].format(music_playing))
         music_player(music_playing)
     except IndexError as e:
-        speak('No music files found')
-        print ("No music files found: {}".format(e))
+        log ("Error: " + e)
+        speak(message_for_random[1])
+
 
 
 def play_specific_music(speech_text, music_path):
@@ -50,12 +51,12 @@ def play_specific_music(speech_text, music_path):
             music_player(music_listing[i])
 
 
-def play_shuffle(music_path):
+def play_shuffle(music_path, message_not_found):
     try:
         music_listing = mp3gen(music_path)
         random.shuffle(music_listing)
         for i in range(0, len(music_listing)):
             music_player(music_listing[i])
     except IndexError as e:
-        speak('No music files found.')
-        print ("No music files found: {}".format(e))
+        speak(message_not_found)
+        log ("No music files found: {}".format(e))
