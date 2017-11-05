@@ -2,5 +2,5 @@ profile.yaml
 *.pyc
 geckodriver.log
 .idea/
-venv/
+venv*/
 memory.db

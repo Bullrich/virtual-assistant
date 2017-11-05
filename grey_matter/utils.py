@@ -1,4 +1,5 @@
 import sys
+import platform
 
 
 def clean_message(speech_text, word_filter):

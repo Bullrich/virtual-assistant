@@ -6,7 +6,7 @@ beautifulsoup4
 selenium
 pyyaml
 pyaudio #requires portaudio library (and portaudio-32bit)
-web.py
+#web.py
 
 # Weather
 git+https://github.com/jtasker/python-weather-api

@@ -1,7 +1,9 @@
 import csv
 import random
+from grey_matter.debug.debug_message import simple_log
 
 undefined = {}
+
 
 class Message:
     def __init__(self, command, keyword, answer):
@@ -37,7 +39,17 @@ def generate_commands_list(csv_file):
         return cmd
 
 
-commands = generate_commands_list('example.csv')
+commands = []
+
+
+def set_language(language):
+    global commands
+    simple_log('Setting language to ' + language)
+    commands = generate_commands_list(str.format('dialogues/{}.csv'.format(language)))
+    simple_log(str.format('Language set: {}', commands is not None))
+    simple_log(commands[0].command)
+    simple_log(get_command('!greeting'))
+
 
 
 def get_command_from_phrase(phrase):
@@ -54,5 +66,3 @@ def get_command(command_order):
             return command
     return None
 
-
-    # print(get_command_from_phrase('how do i look').answer[0].format('javier'))

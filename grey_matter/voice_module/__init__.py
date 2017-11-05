@@ -5,7 +5,7 @@ from gtts import gTTS
 #from grey_matter.debug.debug_message import simple_log
 from grey_matter.utils import get_platform
 
-use_google = True
+use_google = False
 
 
 def tts(audio_string):
@@ -27,6 +27,7 @@ def google_to_text(audio_string):
     if get_platform() == "mac":
         tts_engine = 'afplay'
     else:
+        #from distro import linux_distribution
         tts_engine = 'mpg123'
     os.system('{} {}'.format(tts_engine, audio_name))
     os.remove(audio_name)

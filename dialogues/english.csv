@@ -1,0 +1,19 @@
+Order,Command,keyword,answers
+0,!greeting,,"Welcome, {}, systems are ready"
+1,!weather,how is weather;what weather like,Weather.com says: It is {} and {} degree celcius now in {}
+2,!browser,open browser;open the browser,Opening the browser
+3,!wiki,define,"There was an error, could you be more specific?"
+4,!time,time,The time is 
+5,!sleep,sleep,Goodbye! Have a great day!
+6,!music,play music;music,Now playing {};No music files found
+7,!music_specific,play,Song wasn't find
+8,!music_shuffle,party time;party mix,Now playing {};No music files found.
+9,!write_note,note,Your note has been saved.
+10,!read_note,read notes,Your notes are as follows:
+11,!conv_who,who are you,"I am {}, your lovely personal assistant;{}, didn't I tell you before?;You ask so many times! I am {}"
+12,!conv_how,how i look;how am i,You are goddamn handsome;!My knees go weak when I see you;You look well
+13,!conv_joke,tell joke,This is a joke;This are more joke answers
+14,!conv_who_am_i,who am i,"You are {}, a brilliant person!"
+15,!conv_born,where born,"I was created by a maigician named Javier, in Buenos Aires, Argentina."
+16,!conv_how_are_you,how are you,"I am fine, thank you!;I am having a great day today!"
+17,!undefined,,I don't know what that means!

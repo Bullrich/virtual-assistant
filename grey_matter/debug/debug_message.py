@@ -7,5 +7,6 @@ def log(message):
     if debug_message:
         speak(message)
 
+
 def simple_log(speak_message):
     print(speak_message)

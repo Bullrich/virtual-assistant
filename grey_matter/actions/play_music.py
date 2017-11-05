@@ -9,7 +9,7 @@ def mp3gen(music_path):
     """
     This function finds all the MP3 files in a folder and its subdfolders and returns a list
     """
-    print music_path
+    log (music_path)
     music_list = []
     for root, dirs, files in os.walk(music_path):
         for filename in files:
