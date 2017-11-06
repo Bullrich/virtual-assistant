@@ -1,29 +1,14 @@
+from grey_matter import speak
 from grey_matter import word_processing
-from grey_matter.actions import tell_time, weather, define_subject, open_firefox, play_music, sleep,    notes
-from grey_matter.voice_module import speak
+from grey_matter.actions import tell_time, weather, define_subject, open_firefox, play_music, sleep, notes
 
 
 def brain(name, speech_text, profile_data):
     message = word_processing.get_command_from_phrase(speech_text)
 
     def conversations():
-        # if check_message(['who', 'are', 'you']):
-        #     speech_answer = general_conversation.who_are_you()
-        # elif check_message(['how', 'i', 'look']) or check_message(['how', 'am', 'i']):
-        #     speech_answer = general_conversation.how_am_i()
-        # elif check_message(['tell', 'joke']):
-        #     speech_answer = general_conversation.tell_joke()
-        # elif check_message(['who', 'am', 'i']):
-        #     speech_answer = general_conversation.who_am_i(name)
-        # elif check_message(['where', 'born']):
-        #     speech_answer = general_conversation.where_born()
-        # elif check_message(['how', 'are', 'you']):
-        #     speech_answer = general_conversation.how_are_you()
-        # else:
-        #     speech_answer = general_conversation.undefined()
-
         if is_command('!conv_who'):
-            speech_answer = (message.get_random_answer()).format('Mellisa')
+            speech_answer = (message.get_random_answer()).format('Erio')
         elif is_command('!conv_who_am_i'):
             speech_answer = (message.get_random_answer()).format(name)
         else:

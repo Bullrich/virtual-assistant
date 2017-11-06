@@ -1,9 +1,8 @@
 import os
-
 import web
 import yaml
 
-from grey_matter.voice_module import speak
+from grey_matter import speak
 
 render = web.template.render('templates/')
 urls = (

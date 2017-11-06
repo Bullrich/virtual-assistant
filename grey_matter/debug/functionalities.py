@@ -1,4 +1,4 @@
-from .debug_message import log
+from grey_matter import log
 
 
 def get_recording_devices():

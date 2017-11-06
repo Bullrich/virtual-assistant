@@ -1,4 +1,4 @@
-from grey_matter.voice_module import speak
+from grey_matter import speak
 
 
 def go_to_sleep(message):

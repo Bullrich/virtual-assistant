@@ -1,6 +1,5 @@
 import csv
 import random
-from grey_matter.debug.debug_message import simple_log
 
 undefined = {}
 
@@ -25,31 +24,33 @@ class Message:
         return random.choice(self.answer)
 
 
-def generate_commands_list(csv_file):
+def generate_commands_list(csv_file, language):
     with open(csv_file) as csv_commands:
         # dict reader keeps the order!
         reader = csv.DictReader(csv_commands)
         cmd = []
+        keyword = str.format('keyword_{}', language)
+        answers = str.format('answers_{}', language)
         for index, row in enumerate(reader):
             if row["Command"] == '!undefined':
                 global undefined
-                undefined = Message(row["Command"], row['keyword'], row["answers"])
+                undefined = Message(row["Command"], row[keyword], row[answers])
             else:
-                cmd.append(Message(row["Command"], row['keyword'], row["answers"]))
+                cmd.append(Message(row["Command"], row[keyword], row[answers]))
         return cmd
 
 
 commands = []
 
 
-def set_language(language):
+def set_language(lang):
     global commands
-    simple_log('Setting language to ' + language)
-    commands = generate_commands_list(str.format('dialogues/{}.csv'.format(language)))
-    simple_log(str.format('Language set: {}', commands is not None))
-    simple_log(commands[0].command)
-    simple_log(get_command('!greeting'))
-
+    print('Setting language to ' + lang)
+    commands = generate_commands_list('data/commands.csv', lang)
+    if commands is not None:
+        print(str.format('Language set: {}', commands is not None))
+    else:
+        print('Error. Please use one of the designed languages!')
 
 
 def get_command_from_phrase(phrase):
@@ -65,4 +66,3 @@ def get_command(command_order):
         if command.command == command_order:
             return command
     return None
-

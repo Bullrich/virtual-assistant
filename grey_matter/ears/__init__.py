@@ -1,7 +1,8 @@
 import unicodedata
-from grey_matter.debug.debug_message import log
 
 import speech_recognition as sr
+
+from grey_matter import log
 
 
 class bcolors:

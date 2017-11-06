@@ -13,7 +13,7 @@ def get_news(newspaper):
 #
 # import wikipedia
 #
-# from grey_matter.voice_module import speak
+# from grey_matter import speak
 #
 # def define_subject(speech_text):
 #     words_of_message = speech_text.split()

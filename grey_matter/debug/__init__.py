@@ -1,8 +1,8 @@
-global debug_message
+global sound_debug
 
-debug_message = False
+sound_debug = False
 
 
 def set_debug_state(state):
-    global debug_message
-    debug_message = state
+    global sound_debug
+    sound_debug = state

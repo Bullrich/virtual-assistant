@@ -2,11 +2,11 @@ SpeechRecognition
 gTTS
 wikipedia
 requests
-beautifulsoup4
-selenium
 pyyaml
-pyaudio #requires portaudio library (and portaudio-32bit)
+#pyaudio #requires portaudio library (and portaudio-32bit)
 #web.py
 
 # Weather
 git+https://github.com/jtasker/python-weather-api
+
+# sudo pip install -U setuptools

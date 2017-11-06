@@ -1,6 +1,6 @@
 import pywapi
 
-from grey_matter import voice_module
+from grey_matter import speak
 
 
 def weather(city_name, city_code, predefined_message):
@@ -9,4 +9,4 @@ def weather(city_name, city_code, predefined_message):
         weather_com_result['current_conditions']['text'].lower(),
         weather_com_result['current_conditions']['temperature'], city_name)
 
-    voice_module.speak(weather_result)
+    speak(weather_result)

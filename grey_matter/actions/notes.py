@@ -1,8 +1,8 @@
 import sqlite3
 from datetime import datetime
 
+from grey_matter import speak
 from grey_matter.utils import clean_message
-from grey_matter.voice_module import speak
 
 
 def note_something(speech_text, message):

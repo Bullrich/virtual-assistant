@@ -1,10 +1,9 @@
 import re
-
 import wikipedia
 
-from grey_matter.voice_module import speak
+from grey_matter import speak
 
-
+# TODO: Set language!
 def define_subject(speech_text, predefined_message):
     words_of_message = speech_text.split()
     words_of_message.remove('define')

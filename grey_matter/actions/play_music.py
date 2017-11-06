@@ -1,15 +1,17 @@
-import os
 import random
 
+import os
+
+from grey_matter import log
+from grey_matter import speak
 from grey_matter.utils import clean_message, get_platform
-from grey_matter.voice_module import speak
-from grey_matter.debug.debug_message import log
+
 
 def mp3gen(music_path):
     """
     This function finds all the MP3 files in a folder and its subdfolders and returns a list
     """
-    log (music_path)
+    log(music_path)
     music_list = []
     for root, dirs, files in os.walk(music_path):
         for filename in files:
@@ -37,9 +39,8 @@ def play_random(music_path, message_for_random):
         speak(message_for_random[0].format(music_playing))
         music_player(music_playing)
     except IndexError as e:
-        log ("Error: " + e)
+        log("Error: " + e)
         speak(message_for_random[1])
-
 
 
 def play_specific_music(speech_text, music_path):
@@ -59,4 +60,4 @@ def play_shuffle(music_path, message_not_found):
             music_player(music_listing[i])
     except IndexError as e:
         speak(message_not_found)
-        log ("No music files found: {}".format(e))
+        log("No music files found: {}".format(e))
